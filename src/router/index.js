@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import WebIndex from '@/components/WebIndex'
 import Header from '@/components/nav/Header'
+import Nav from '@/components/nav/Nav'
 import Login from '@/components/account/Login'
 
 Vue.use(Router)
@@ -16,8 +17,8 @@ export default new Router({
     },
     {
       path: '/nav',
-      name: 'WebIndex',
-      component: WebIndex
+      name: 'Nav',
+      component: Nav
     },
     {
       path: '/header',

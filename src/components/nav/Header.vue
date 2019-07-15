@@ -31,17 +31,32 @@
                     <div class="layout-nav">
                        
                         <MenuItem name="1" v-show="!userInfo.username">
-                            您好,请<router-link to="/login">登陆</router-link>
-                            <Icon type="md-person" /> | <span class="text-color-red"><router-link to="/SignUp">免费注册 <Icon type="md-person-add" /></router-link></span>
+                            您好,请<router-link to="/Login">登陆</router-link>
+                            <Icon type="md-person" /> | <span class="text-color-red"><router-link to="/SignUp"> 免费注册 <Icon type="md-person-add" /></router-link></span>
                         </MenuItem>
                         <MenuItem name="2">
                             <Icon type="ios-cart" />
                             我的订单
                         </MenuItem>
-                        <MenuItem name="3">
-                            <Icon type="ios-cart" />
-                            购物车
-                        </MenuItem>
+                        <Submenu name="3">
+                            <template slot="title">
+                                <Icon type="ios-cart-outline"></Icon>
+                                购物车
+                            </template>
+                            <MenuGroup title="最近加入的宝贝">
+                                <MenuItem  v-for="(item, index) in shoppingCart" name="3-index" :key="index">
+                                    <div class="shopping-cart-info">
+                                        <div></div>
+                                    </div>
+                                    <p>
+                                        <span>{{item.title}}</span>
+                                        <span>1111</span>
+                                        <span>1111</span>
+                                    </p>
+                                    
+                                </MenuItem>
+                            </MenuGroup>
+                        </Submenu>
                         <MenuItem name="4">
                             <Icon type="md-chatboxes" />
                             意见反馈
@@ -103,11 +118,12 @@
     export default {
         data () {
             return {
-                isCollapsed: false
+                isCollapsed: false,
+                visible: false
             }
         },
         computed: {
-            ...mapState(['userInfo']),
+            ...mapState(['userInfo', 'shoppingCart']),
             rotateIcon () {
                 return [
                     'menu-icon',
@@ -124,6 +140,12 @@
         methods: {
             collapsedSider () {
                 this.$refs.side1.toggleCollapse();
+            },
+            handleOpen () {
+                this.visible = true;
+            },
+            handleClose () {
+                this.visible = false;
             }
         },
         store
