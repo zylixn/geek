@@ -43,17 +43,17 @@
                                 <Icon type="ios-cart-outline"></Icon>
                                 购物车
                             </template>
-                            <MenuGroup title="最近加入的宝贝">
+                            <MenuGroup title="最近加入的宝贝" v-if="userInfo.username">
                                 <MenuItem  v-for="(item, index) in shoppingCart" name="3-index" :key="index">
                                     <div class="shopping-cart-info">
-                                        <div></div>
+                                        <div class="shopping-cart-title">
+                                            {{item.title}}
+                                        </div>
+                                        <div class="shopping-cart-detail">
+                                            单价：<span class="shopping-cart-text">{{item.price}}</span>
+                                            数量：<span class="shopping-cart-text">{{item.count}}</span>
+                                        </div>
                                     </div>
-                                    <p>
-                                        <span>{{item.title}}</span>
-                                        <span>1111</span>
-                                        <span>1111</span>
-                                    </p>
-                                    
                                 </MenuItem>
                             </MenuGroup>
                         </Submenu>
@@ -156,5 +156,23 @@
     a {
         text-decoration: none;
         color: #999999;
+    }
+    .shopping-cart-info {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        justify-content: space-between;
+        align-content: flex-start;
+        overflow: hidden;
+        font-size: 12px;
+        line-height: 20px;
+        color: #999999;
+    }
+
+    .shopping-cart-detail {
+        color: #999999;
+    }
+    .shopping-cart-text {
+        color: #ccc;
     }
 </style>

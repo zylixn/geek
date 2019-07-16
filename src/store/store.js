@@ -12,13 +12,22 @@ export default new Vuex.Store({
         userInfo: { 
             username: ''
         },
-        shoppingCart: [{
-            goods_id: 1529931938150,
-            count: 1,
-            img: 'static/img/goodsDetail/pack/1.jpg',
-            price: 28,
-            title: '白菜'
-        }]
+        shoppingCart: [
+            {
+                goods_id: 1529931938150,
+                count: 1,
+                img: 'static/img/goodsDetail/pack/1.jpg',
+                price: 28,
+                title: '白菜'
+            },
+            {
+                goods_id: 1529931938151,
+                count: 2,
+                img: 'static/img/goodsDetail/pack/1.jpg',
+                price: 40,
+                title: '猪肉'
+            }
+        ]
     },
     mutations,
     actions,
